@@ -1,0 +1,11 @@
+builders:
+  drift_dev_builder:
+    import: "package:drift_dev/integrations/build.dart"
+    builder_factories: ["moorBuilder"]
+    build_extensions: {".dart": [".moor.g.part"]}
+    auto_apply: dependents
+    build_to: cache
+    required_inputs: [".dart_in_moor"]
+    applies_builders: ["source_gen|combining_builder"]
+    runs_before:
+      - mobx_codegen:mobx_generator
